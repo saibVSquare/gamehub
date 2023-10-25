@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import apiClient from "../services/api-client.ts";
 import {CanceledError} from "axios";
 
-interface Platform{
+interface Platform {
     id: number;
     name: string;
     slug: string;
@@ -13,8 +13,8 @@ interface Game {
     id: number;
     name: string;
     background_image: string;
-    parent_platforms: {platform: Platform}[];
-    metacritic:number;
+    parent_platforms: { platform: Platform }[];
+    metacritic: number;
 }
 
 interface FetchGamesResponse {
@@ -47,7 +47,7 @@ const useGames = () => {
         return () => controller.abort();
     }, []);
 
-    return {games, error,isLoading};
+    return {games, error, isLoading};
 }
 
 export default useGames;
