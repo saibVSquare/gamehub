@@ -6,12 +6,18 @@ import useGames from "../hooks/useGames.ts";
 // @ts-ignore
 import GameCard from "./GameCard.tsx";
 // @ts-ignore
+import {Genre} from "./hooks/useGenres.ts";
+// @ts-ignore
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
 
-const GameGrid = () => {
-    const {games, error, isLoading} = useGames();
-    const skeletons = [1, 2, 3, 5, 6];
+interface Props {
+    selectedGenre: Genre | null;
+}
 
+const GameGrid = ({selectedGenre}: Props) => {
+    const {games, error, isLoading} = useGames(selectedGenre);
+    const skeletons = [1, 2, 3, 5, 6];
+    console.log("Selected Data =>", selectedGenre);
     return (
         <>
             {error && <Text>{error}</Text>}
